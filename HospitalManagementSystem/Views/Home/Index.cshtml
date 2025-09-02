@@ -1,31 +1,131 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<style>
+:root{--brand:#0b6cf6;--muted:#6b7280;--card:#ffffff;--bg:#f5f7fb}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg);color:#0f172a}
+a{text-decoration:none}
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:60px 0}
+.hero h1{font-size:32px;margin:0 0 12px}
+.hero p{color:var(--muted);margin:0 0 18px;font-size:16px}
+.hero-img{width:100%;border-radius:16px;box-shadow:0 10px 25px rgba(12,20,40,0.15)}
+
+/* Appointment Search */
+.search-card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(12,20,40,0.06)}
+.search-row{display:flex;gap:10px;margin-bottom:12px}
+.search-row input, .search-row select{flex:1;padding:10px;border-radius:8px;border:1px solid #e6eefc}
+.btn{background:var(--brand);color:white;padding:10px 14px;border-radius:8px;border:0;cursor:pointer;transition:.2s}
+.btn:hover{background:#0959c5}
+
+/* Doctor list */
+.section-title{font-size:22px;margin:40px 0 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(12,20,40,0.04);transition:.2s}
+.card:hover{transform:translateY(-5px)}
+.doc-head{display:flex;gap:12px;align-items:center}
+.avatar{width:64px;height:64px;border-radius:10px;background:#eef2ff;display:flex;align-items:center;justify-content:center;font-size:28px;color:#0b6cf6}
+.meta{flex:1}
+.meta h3{margin:0;font-size:16px}
+.meta p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.pill{background:#eef2ff;color:#0b6cf6;padding:4px 10px;border-radius:20px;font-size:12px}
+.book-btn{background:var(--brand);color:white;padding:6px 12px;border-radius:6px;font-size:13px;border:0;cursor:pointer}
+
+/* Responsive */
+@@media(max-width:980px){.hero{grid-template-columns:1fr}}
+</style>
+
+<div class="container">
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1>Book Your Doctor Appointment</h1>
+            <p>
+                CareWell Hospital makes it easy to book appointments with top doctors.
+                Search by specialty or doctor name and get instant slots.
+            </p>
+
+            <div class="search-card">
+                <div class="search-row">
+                    <input type="text" placeholder="Search Doctor or Specialty" />
+                    <select>
+                        <option>Select Department</option>
+                        <option>Cardiology</option>
+                        <option>Neurology</option>
+                        <option>Orthopedics</option>
+                        <option>Pediatrics</option>
+                    </select>
+                </div>
+                <button class="btn">Search</button>
+            </div>
+        </div>
+        <div>
+            <img src="https://cdn.pixabay.com/photo/2016/11/18/16/19/doctor-1838929_960_720.jpg" alt="Doctor Consultation" class="hero-img" />
+        </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <h2 class="section-title">Available Doctors</h2>
+    <div class="grid">
+        <div class="card">
+            <div class="doc-head">
+                <div class="avatar">👨‍⚕️</div>
+                <div class="meta">
+                    <h3>Dr. Rajesh Sharma</h3>
+                    <p>Cardiologist</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="pill">10 yrs exp.</span>
+                <button class="book-btn">Book</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="doc-head">
+                <div class="avatar">👩‍⚕️</div>
+                <div class="meta">
+                    <h3>Dr. Anita Verma</h3>
+                    <p>Neurologist</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="pill">8 yrs exp.</span>
+                <button class="book-btn">Book</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="doc-head">
+                <div class="avatar">👨‍⚕️</div>
+                <div class="meta">
+                    <h3>Dr. Sameer Khan</h3>
+                    <p>Orthopedic Surgeon</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="pill">12 yrs exp.</span>
+                <button class="book-btn">Book</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="doc-head">
+                <div class="avatar">👩‍⚕️</div>
+                <div class="meta">
+                    <h3>Dr. Neha Gupta</h3>
+                    <p>Pediatrician</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="pill">6 yrs exp.</span>
+                <button class="book-btn">Book</button>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+
 </div>
