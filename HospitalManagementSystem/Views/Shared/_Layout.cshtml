@@ -1,53 +1,106 @@
 ﻿@{
-    Layout = null; // ensures this is the main layout
+    Layout = null;
 }
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewBag.Title - Hospital Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Hospital Appointment System</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8fafc;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(90deg, #007bff, #00c6ff);
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+            .header .logo {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+                .header .logo img {
+                    width: 40px;
+                    height: 40px;
+                }
+
+            .header h1 {
+                margin: 0;
+                font-size: 22px;
+                font-weight: bold;
+            }
+
+            .header nav {
+                display: flex;
+                gap: 20px;
+            }
+
+                .header nav a {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: 500;
+                    transition: color 0.3s;
+                }
+
+                    .header nav a:hover {
+                        color: #ffe600;
+                    }
+
+        /* Footer */
+        footer {
+            background: #007bff;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            margin-top: 30px;
+        }
+
+        /* Content */
+        .container {
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <!-- Mobile menu toggle -->
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNav">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Hospital System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse" id="mainNav">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Appointments", "Index", "Appointments")</li>
-                    <li>@Html.ActionLink("Doctors", "Index", "Doctors")</li>
-                    <li>@Html.ActionLink("Departments", "Index", "Departments")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                </ul>
-            </div>
+    <!-- Custom Header -->
+    <div class="header">
+        <div class="logo">
+            <img src="~/Content/images/hospital-logo.png" alt="Logo" />
+            <h1>Hospital Appointment System</h1>
         </div>
-    </nav>
-
-    <!-- Page Content -->
-    <div class="container body-content" style="padding-top:70px;">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - CareWell Hospital</p>
-        </footer>
+        <nav>
+            <a href="@Url.Action("Index", "Home")">Home</a>
+            <a href="@Url.Action("About", "Home")">About</a>
+            <a href="@Url.Action("Contact", "Home")">Contact</a>
+            <a href="@Url.Action("Login", "Account")">Login</a>
+        </nav>
     </div>
 
-    <!-- Scripts -->
+    <!-- Main Content -->
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Hospital Appointment Booking</p>
+    </footer>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
