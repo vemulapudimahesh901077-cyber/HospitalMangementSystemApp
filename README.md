@@ -1,0 +1,2 @@
+# HospitalMangementSystemApp
+Delivers right time
